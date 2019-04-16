@@ -1,0 +1,31 @@
+<header [result]="moneyChange"></header>
+<div class="container-fluid bg-light">
+    <form #exchangeForm="ngForm" (ngSubmit)="submitExchange(exchangeForm.value)" >
+        <div class="messages"></div>
+        <div class="controls">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="form_name">USD *</label>
+                        <input type="text" name="usdVal" ngModel placeholder="USD" numeric numericType="number" class="form-control" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="form_email">Euro *</label>
+                        <input type="text" name="eurVal" ngModel  placeholder="EUR" class="form-control" [value]="eurVal | currency:'EUR':'':'0.2-4'" disabled>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="mx-auto" style="width: 200px;">
+                <input type="submit" value="Calculate" id="submitButton" style="width: 200px;" [disabled]="!exchangeForm.valid"  class="btn btn-warning btn-send btn-lg">
+            </div>
+        </div>
+    </form>
+</div>
